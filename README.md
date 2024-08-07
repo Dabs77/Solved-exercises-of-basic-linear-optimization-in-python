@@ -34,3 +34,27 @@ m.minimize(15*x1 + 9*x2 + 12*x3)
 solution = m.solve()
 m.print_solution()
 
+## Exercise 2: Pen Factory Optimization
+
+### Problem Statement
+A pen factory produces two types of pens that require various amounts of ink and pen bodies. Each type one pen requires 2 ml of black ink and 3 ml of blue ink, while each type two pen requires 2 ml of black ink and 2 ml of red ink. The factory has 1.2 liters of black ink, 1 liter of blue ink, and 0.8 liters of red ink; 800 plastic bodies, 750 metal bodies, and 1200 caps available. The profitability after covering costs is COP $350 per plastic pen and COP $420 per metal pen. The goal is to maximize profitability from pen sales.
+
+### Solution
+```python
+from docplex.mp.model import Model
+
+m2 = Model(name="Pen Production")
+
+y1 = m2.continuous_var(name='y1')  # type I pens
+y2 = m2.continuous_var(name='y2')  # type II pens
+
+m2.add_constraints([2*y1 + 2*y2 <= 1200, 3*y1 <= 1000, 2*y2 <= 800])
+m2.add_constraints([y1 <= 800, y2 <= 750, y1 + y2 <= 1200])
+
+m2.maximize(350*y1 + 420*y2)
+
+solution2 = m2.solve()
+m2.print_solution()
+
+
+This section provides a clear description of the problem and the complete Python code used to model and solve the optimization problem for maximizing profitability in a pen factory scenario.
