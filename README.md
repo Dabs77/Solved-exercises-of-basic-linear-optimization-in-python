@@ -33,6 +33,7 @@ m.minimize(15*x1 + 9*x2 + 12*x3)
 
 solution = m.solve()
 m.print_solution()
+```
 
 ## Exercise 2: Pen Factory Optimization
 
@@ -55,6 +56,6 @@ m2.maximize(350*y1 + 420*y2)
 
 solution2 = m2.solve()
 m2.print_solution()
-
+```
 
 This section provides a clear description of the problem and the complete Python code used to model and solve the optimization problem for maximizing profitability in a pen factory scenario.
