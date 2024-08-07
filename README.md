@@ -12,6 +12,31 @@ A person wants to follow a diet that meets their nutritional requirements while 
 
 Each gram of nuts provides 1 unit of protein, 3 units of carbohydrates, and 4 units of fat; the powdered supplement provides 3 units of protein, 3 units of carbohydrates, and 1 unit of fat; the liquid supplement provides 2 units of protein, 3 units of carbohydrates, and 2 units of fat. The dietary requirement is a minimum of 80 protein units, a minimum of 90 carbohydrate units, and exactly 65 fat units.
 
+# Planteamiento
+
+## Variables de decisión:
+- **X1**: Cantidad de gramos de Frutos Secos
+- **X2**: Cantidad de gramos de suplemento en polvo
+- **X3**: Cantidad de gramos de suplemento líquido
+
+## Objetivo: F.O
+\[ F \cdot O : \text{Min}(Z) = 15X1 + 9X2 + 12X3 \]
+
+## S.A:
+### Restricciones: en términos de los parámetros
+
+#### Máximo de suplementos para comprar:
+- **Frutos rojos**: \( X1 \leq 700 \)
+- **Suplemento en polvo**: \( X2 \leq 2000 \)
+- **Suplemento líquido**: \( X3 \leq 5000 \)
+
+Añadir restricciones de no negatividad: \( X1, X2, X3 \geq 0 \)
+
+#### Mínimo de cada componente:
+- **UDP**: \( X1 + 3X2 + 2X3 \geq 80 \)
+- **UDC**: \( 3X1 + 3X2 + 3X3 \geq 90 \)
+- **UDG**: \( 4X1 + 2X2 + 3X3 \geq 65 \)
+
 ### Solution
 ```python
 import cplex
