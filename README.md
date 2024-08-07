@@ -20,22 +20,22 @@ Each gram of nuts provides 1 unit of protein, 3 units of carbohydrates, and 4 un
 - **X3**: Cantidad de gramos de suplemento líquido
 
 ## Objetivo: F.O
-\[ F \cdot O : \text{Min}(Z) = 15X1 + 9X2 + 12X3 \]
+  **FO** : $Min(Z) = 15X1 + 9X2 + 12X3$
 
 ## S.A:
 ### Restricciones: en términos de los parámetros
 
 #### Máximo de suplementos para comprar:
-- **Frutos rojos**: \( X1 \leq 700 \)
-- **Suplemento en polvo**: \( X2 \leq 2000 \)
-- **Suplemento líquido**: \( X3 \leq 5000 \)
+- **Frutos rojos**: $X1 \leq 700$
+- **Suplemento en polvo**: $X2 \leq 2000$
+- **Suplemento líquido**: $X3 \leq 5000$
 
-Añadir restricciones de no negatividad: \( X1, X2, X3 \geq 0 \)
+Añadir restricciones de no negatividad: $X1, X2, X3 \geq 0$
 
 #### Mínimo de cada componente:
-- **UDP**: \( X1 + 3X2 + 2X3 \geq 80 \)
-- **UDC**: \( 3X1 + 3X2 + 3X3 \geq 90 \)
-- **UDG**: \( 4X1 + 2X2 + 3X3 \geq 65 \)
+- **UDP**: $X1 + 3X2 + 2X3 \geq 80$
+- **UDC**: $3X1 + 3X2 + 3X3 \geq 90$
+- **UDG**: $4X1 + 2X2 + 3X3 \geq 65$
 
 ### Solution
 ```python
@@ -65,6 +65,30 @@ m.print_solution()
 ### Problem Statement
 A pen factory produces two types of pens that require various amounts of ink and pen bodies. Each type one pen requires 2 ml of black ink and 3 ml of blue ink, while each type two pen requires 2 ml of black ink and 2 ml of red ink. The factory has 1.2 liters of black ink, 1 liter of blue ink, and 0.8 liters of red ink; 800 plastic bodies, 750 metal bodies, and 1200 caps available. The profitability after covering costs is COP $350 per plastic pen and COP $420 per metal pen. The goal is to maximize profitability from pen sales.
 
+# Planteamiento del modelo
+
+## Variables de decisión:
+Cantidad de bolígrafos de cada tipo a producir
+
+- **X**: Cantidad de bolígrafos tipo I
+- **Y**: Cantidad de bolígrafos tipo II
+
+## Función objetivo
+
+$ F.O: \text{Máx}(Z) = 350X + 420Y $
+
+## Restricciones: en términos de los parámetros
+
+- **Tinta negra**: $ 2X + 2Y \leq 1200 $ ml
+- **Tinta azul**: $ 3X + 0Y \leq 1000 $ ml
+- **Tinta roja**: $ 0X + 2Y \leq 800 $ ml
+- **Cuerpos plásticos**: $ X + 0Y \leq 800 $ und
+- **Cuerpos metalizados**: $ 0X + Y \leq 750 $
+- **Tapas**: $ X + Y \leq 1200 $
+
+Añadir restricciones de no negatividad: $ X \geq 0 $ ; $ Y \geq 0 $
+
+
 ### Solution
 ```python
 from docplex.mp.model import Model
@@ -82,5 +106,6 @@ m2.maximize(350*y1 + 420*y2)
 solution2 = m2.solve()
 m2.print_solution()
 ```
+
 
 This section provides a clear description of the problem and the complete Python code used to model and solve the optimization problem for maximizing profitability in a pen factory scenario.
