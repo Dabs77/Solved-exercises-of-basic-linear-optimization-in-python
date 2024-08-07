@@ -12,30 +12,29 @@ A person wants to follow a diet that meets their nutritional requirements while 
 
 Each gram of nuts provides 1 unit of protein, 3 units of carbohydrates, and 4 units of fat; the powdered supplement provides 3 units of protein, 3 units of carbohydrates, and 1 unit of fat; the liquid supplement provides 2 units of protein, 3 units of carbohydrates, and 2 units of fat. The dietary requirement is a minimum of 80 protein units, a minimum of 90 carbohydrate units, and exactly 65 fat units.
 
-# Planteamiento
+# Model Formulation
 
-## Variables de decisión:
-- **X1**: Cantidad de gramos de Frutos Secos
-- **X2**: Cantidad de gramos de suplemento en polvo
-- **X3**: Cantidad de gramos de suplemento líquido
+## Decision Variables:
+Quantity of pens of each type to produce
 
-## Objetivo: F.O
-  **FO** : $Min(Z) = 15X1 + 9X2 + 12X3$
+- **X**: Quantity of type I pens
+- **Y**: Quantity of type II pens
 
-## S.A:
-### Restricciones: en términos de los parámetros
+## Objective Function
 
-#### Máximo de suplementos para comprar:
-- **Frutos rojos**: $X1 \leq 700$
-- **Suplemento en polvo**: $X2 \leq 2000$
-- **Suplemento líquido**: $X3 \leq 5000$
+$FO: \text{Max}(Z) = 350X + 420Y$
 
-Añadir restricciones de no negatividad: $X1, X2, X3 \geq 0$
+## Constraints: in terms of parameters
 
-#### Mínimo de cada componente:
-- **UDP**: $X1 + 3X2 + 2X3 \geq 80$
-- **UDC**: $3X1 + 3X2 + 3X3 \geq 90$
-- **UDG**: $4X1 + 2X2 + 3X3 \geq 65$
+- **Black Ink**: $2X + 2Y \leq 1200$ ml
+- **Blue Ink**: $3X + 0Y \leq 1000$ ml
+- **Red Ink**: $0X + 2Y \leq 800$ ml
+- **Plastic Bodies**: $X + 0Y \leq 800$ units
+- **Metal Bodies**: $0X + Y \leq 750$
+- **Caps**: $X + Y \leq 1200$
+
+Add non-negativity constraints: $X \geq 0$ ; $Y \geq 0$
+
 
 ### Solution
 ```python
@@ -65,28 +64,28 @@ m.print_solution()
 ### Problem Statement
 A pen factory produces two types of pens that require various amounts of ink and pen bodies. Each type one pen requires 2 ml of black ink and 3 ml of blue ink, while each type two pen requires 2 ml of black ink and 2 ml of red ink. The factory has 1.2 liters of black ink, 1 liter of blue ink, and 0.8 liters of red ink; 800 plastic bodies, 750 metal bodies, and 1200 caps available. The profitability after covering costs is COP $350 per plastic pen and COP $420 per metal pen. The goal is to maximize profitability from pen sales.
 
-# Planteamiento del modelo
+# Formulation
 
-## Variables de decisión:
-Cantidad de bolígrafos de cada tipo a producir
+## Decision Variables:
+- **X1**: Quantity of grams of Dried Fruits
+- **X2**: Quantity of grams of powdered supplement
+- **X3**: Quantity of grams of liquid supplement
 
-- **X**: Cantidad de bolígrafos tipo I
-- **Y**: Cantidad de bolígrafos tipo II
+## Objective: FO
+  **FO** : $Min(Z) = 15X1 + 9X2 + 12X3$
 
-## Función objetivo
+## Constraints:
+### Maximum supplements to buy:
+- **Dried Fruits**: $X1 \leq 700$
+- **Powdered Supplement**: $X2 \leq 2000$
+- **Liquid Supplement**: $X3 \leq 5000$
 
-$ F.O: \text{Máx}(Z) = 350X + 420Y $
+Add non-negativity constraints: $X1, X2, X3 \geq 0$
 
-## Restricciones: en términos de los parámetros
-
-- **Tinta negra**: $ 2X + 2Y \leq 1200 $ ml
-- **Tinta azul**: $ 3X + 0Y \leq 1000 $ ml
-- **Tinta roja**: $ 0X + 2Y \leq 800 $ ml
-- **Cuerpos plásticos**: $ X + 0Y \leq 800 $ und
-- **Cuerpos metalizados**: $ 0X + Y \leq 750 $
-- **Tapas**: $ X + Y \leq 1200 $
-
-Añadir restricciones de no negatividad: $ X \geq 0 $ ; $ Y \geq 0 $
+### Minimum of each component:
+- **UDP**: $X1 + 3X2 + 2X3 \geq 80$
+- **UDC**: $3X1 + 3X2 + 3X3 \geq 90$
+- **UDG**: $4X1 + 2X2 + 3X3 \geq 65$
 
 
 ### Solution
